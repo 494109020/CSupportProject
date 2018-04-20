@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        System.currentTimeMillis();
 
         // Example of a call to a native method
         TextView tv = (TextView) findViewById(R.id.sample_text);
