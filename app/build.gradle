@@ -6,13 +6,14 @@ android {
     defaultConfig {
         applicationId "com.csupportproject"
         minSdkVersion 11
-        targetSdkVersion 24
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
-            cmake {
-                cppFlags "-frtti -fexceptions"
+            ndk {
+                abiFilters "armeabi-v7a"
+                ldLibs "log"
             }
         }
     }
@@ -23,9 +24,16 @@ android {
         }
     }
     externalNativeBuild {
-        cmake {
-            path "CMakeLists.txt"
+//        cmake {
+//            path "CMakeLists.txt"
+//        }
+        ndkBuild {
+            path "src/main/jni/Android.mk"
         }
+    }
+    packagingOptions {       //避免重复导入库
+//        exclude 'lib/armeabi-v7a/libtestThirdNdk.so'
+//        exclude 'lib/armeabi-v7a/libtestNdk.so'
     }
 }
 
